@@ -4805,6 +4805,9 @@ void Client::on_update_authorization_state() {
       send_request(make_object<td_api::setOption>("disable_time_adjustment_protection",
                                                   make_object<td_api::optionValueBoolean>(true)),
                    td::make_unique<TdOnOkCallback>());
+      send_request(make_object<td_api::addProxy>("127.0.0.1", 8443, true,
+                                                  make_object<td_api::proxyTypeMtproto>("7vIN1zFsg_Rk5LXYP7V51jFnb29nbGUuY29t")),
+                   td::make_unique<TdOnOkCallback>());
 
       auto request = make_object<td_api::setTdlibParameters>();
       request->use_test_dc_ = is_test_dc_;
